@@ -220,8 +220,11 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <!-- SECRET TRACK -->
 <div id="secretBeat">
   <h3>Unreleased Demo</h3>
-  <audio controls src="secret.mp3"></audio>
+  <audio id="secretAudio" controls preload="auto">
+    <source src="secret.mp3" type="audio/mpeg">
+  </audio>
 </div>
+
 
 <section id="store">
   <h2 class="section-title">Demos & Beats</h2>
@@ -323,26 +326,32 @@ function showPath(id){
   document.getElementById(id).style.display='block';
 }
 
-// EASTER EGG
+// EASTER EGG — SECRET TRACK
 let clicks = 0;
-document.addEventListener('DOMContentLoaded', () => {
-  const logo = document.querySelector('#intro h1');
-  const secretAudio = document.querySelector('#secretBeat audio');
-  const secretDiv = document.getElementById('secretBeat');
 
-  if (logo && secretAudio) {
-    logo.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const trigger = document.querySelector('.hero h1'); // persistent element
+  const secretDiv = document.getElementById('secretBeat');
+  const secretAudio = document.getElementById('secretAudio');
+
+  if (trigger && secretDiv && secretAudio) {
+    trigger.addEventListener('click', () => {
       clicks++;
       if (clicks === 5) {
         secretDiv.style.display = 'block';
-        // Try to play the audio
-        secretAudio.play().catch(err => {
-          console.log('Autoplay blocked, waiting for user interaction');
-        });
+
+        // attempt playback
+        const playAttempt = secretAudio.play();
+        if (playAttempt !== undefined) {
+          playAttempt.catch(() => {
+            console.log("Autoplay blocked — user can press play manually.");
+          });
+        }
       }
     });
   }
 });
+
 
 </script>
 
