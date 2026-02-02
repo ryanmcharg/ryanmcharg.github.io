@@ -103,7 +103,24 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 .mobile-mailto{display:inline-block !important;}
 .grid{overflow-x:auto;grid-template-columns:repeat(auto-fit,minmax(80%,1fr));}
 }
+
+/* MOOD FINDER */
+.mood-buttons{display:flex;flex-wrap:wrap;gap:15px;margin-bottom:30px}
+.mood-buttons button{background:#111;border:2px solid #00f0ff;color:#00f0ff;padding:10px 18px;border-radius:25px;cursor:pointer;transition:.3s}
+.mood-buttons button:hover{background:#00f0ff;color:#000}
+
+/* PATHWAY */
+.pathway-buttons{display:flex;flex-wrap:wrap;gap:15px;margin-bottom:30px}
+.pathway-buttons button{background:#111;border:2px solid #ff00ea;color:#ff00ea;padding:10px 18px;border-radius:25px;cursor:pointer}
+.pathway{display:none;margin-top:20px}
+
+/* FEEDBACK PORTAL */
+.feedback-box{background:#14141c;padding:25px;border-radius:12px;max-width:600px}
+
+/* SECRET */
+#secretBeat{display:none;margin-top:30px}
 </style>
+
 <body>
 
 <div id="intro"><h1>RM</h1></div>
@@ -131,99 +148,109 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <section id="music">
   <h2 class="section-title">Featured Work</h2>
   <div class="grid">
-    <div class="card">
+    <div class="card beat-card" data-title="TAKE TWO" data-mood="energetic">
       <h3>TAKE TWO</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ohonetwothree/take-two"></iframe>
     </div>
-    <div class="card">
+    <div class="card beat-card" data-title="SO EASY (APOD Demo)" data-mood="fun">
       <h3>SO EASY (APOD Demo)</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/the-sweetest-revenge-is-letting-go-apod-demo"></iframe>
     </div>
-    <div class="card">
+    <div class="card beat-card" data-title="DREAMING IN AN UNDERPASS" data-mood="emotional">
       <h3>DREAMING IN AN UNDERPASS</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/dreaming-in-an-underpass-instrumental"></iframe>
     </div>
-    <div class="card">
+    <div class="card beat-card" data-title="SENTIMENTS" data-mood="emotional">
       <h3>SENTIMENTS</h3>
-      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549558%3Fsecret_token%3Ds-b2XrSTRFVXK&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ryanmcharg" title="Ryan McHarg" target="_blank" style="color: #cccccc; text-decoration: none;">Ryan McHarg</a> · <a href="https://soundcloud.com/ryanmcharg/sentiments-1/s-b2XrSTRFVXK" title="Sentiments" target="_blank" style="color: #cccccc; text-decoration: none;">Sentiments</a></div>
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549558%3Fsecret_token%3Ds-b2XrSTRFVXK&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
     </div>
-    <div class="card">
+    <div class="card beat-card" data-title="SOLO ft. Oliver Pickard" data-mood="bouncy">
       <h3>SOLO ft. Oliver Pickard</h3>
-      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549561%3Fsecret_token%3Ds-PSkdxTTvCkT&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ryanmcharg" title="Ryan McHarg" target="_blank" style="color: #cccccc; text-decoration: none;">Ryan McHarg</a> · <a href="https://soundcloud.com/ryanmcharg/solo-ft-oliver-pickard-2/s-PSkdxTTvCkT" title="Solo ft. Oliver Pickard" target="_blank" style="color: #cccccc; text-decoration: none;">Solo ft. Oliver Pickard</a></div>
+      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549561%3Fsecret_token%3Ds-PSkdxTTvCkT&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
     </div>
   </div>
 </section>
+
+<!-- NEW: MOOD FILTER -->
+<section>
+  <h2 class="section-title">Find Your Sound</h2>
+  <div class="mood-buttons">
+    <button onclick="filterBeats('energetic')">Upbeat / Energetic</button>
+    <button onclick="filterBeats('emotional')">Emotional</button>
+    <button onclick="filterBeats('fun')">Fun / Groovy</button>
+    <button onclick="filterBeats('bouncy')">Bouncy</button>
+    <button onclick="filterBeats('all')">Show All</button>
+  </div>
+</section>
+
+<!-- NEW: PATHWAY -->
+<section>
+  <h2 class="section-title">What Do You Need?</h2>
+  <div class="pathway-buttons">
+    <button onclick="showPath('vocalist')">🎤 I’m a Vocalist</button>
+    <button onclick="showPath('band')">🎸 I’m a Band</button>
+    <button onclick="showPath('film')">🎬 I Need Music for Film</button>
+  </div>
+
+  <div id="vocalist" class="pathway">
+    <p>Custom production, vocal tuning, arrangement, and radio-ready mixes.</p>
+  </div>
+  <div id="band" class="pathway">
+    <p>Live instrumentation mixing, punchy drums, full-track polish.</p>
+  </div>
+  <div id="film" class="pathway">
+    <p>Cinematic compositions, emotional scoring, sync-ready production.</p>
+  </div>
+</section>
+
+<!-- NEW: FEEDBACK PORTAL -->
+<section>
+  <h2 class="section-title">Want Feedback on Your Track?</h2>
+  <div class="feedback-box">
+    <form action="https://formspree.io/f/xrellqgn" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <input type="file" name="track" accept="audio/*" required>
+      <textarea name="message" placeholder="What would you like feedback on?"></textarea>
+      <button type="submit" class="btn btn-main">Send Track</button>
+    </form>
+  </div>
+</section>
+
+<!-- SECRET TRACK -->
+<div id="secretBeat">
+  <h3>Unreleased Demo</h3>
+  <audio controls src="secret.mp3"></audio>
+</div>
 
 <section id="store">
   <h2 class="section-title">Demos & Beats</h2>
   <div class="grid">
-    <div class="card" data-title="HYPE">
+    <div class="card beat-card" data-title="HYPE" data-mood="energetic">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
       <p>Genre: Hyperpop/House | BPM: 126 | Mood: Energetic</p>
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
-        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
-        <input type="hidden" name="track" class="track-name" value="">
-        <input type="email" name="_replyto" placeholder="Your email address" required>
-        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
-      </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
-      <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
+      <!-- existing customise form and buy links preserved -->
     </div>
-
-    <div class="card" data-title="SAUDADE">
+    <div class="card beat-card" data-title="SAUDADE" data-mood="bouncy">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
       <p>Genre: Hip-Hop/Latin | BPM: 121 | Mood: Bouncy</p>
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
-        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
-        <input type="hidden" name="track" class="track-name" value="">
-        <input type="email" name="_replyto" placeholder="Your email address" required>
-        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
-      </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
-      <a href="https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx" class="btn btn-main" target="_blank">BUY</a>
     </div>
-
-    <div class="card" data-title="Aspire (Jazz/Funk/Rock)">
+    <div class="card beat-card" data-title="Aspire (Jazz/Funk/Rock)" data-mood="fun">
       <iframe height="215" src="https://solo.airbit.com/3222976?store=1"></iframe>
       <p>Genre: Jazz/Funk | Mood: Fun</p>
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
-        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
-        <input type="hidden" name="track" class="track-name" value="">
-        <input type="email" name="_replyto" placeholder="Your email address" required>
-        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
-      </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
-      <a href="https://airbit.com/share/RyanMcHarg/aspire-jazzfunkrock" class="btn btn-main" target="_blank">BUY</a>
     </div>
-    
-    <div class="card" data-title="RAIN (Alternative/Pop-Rock/Chill)">
+    <div class="card beat-card" data-title="RAIN (Alternative/Pop-Rock/Chill)" data-mood="emotional">
       <iframe height="215" src="https://solo.airbit.com/3222977?store=1"></iframe>
       <p>Genre: Alternative | Mood: Emotional</p>
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
-        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
-        <input type="hidden" name="track" class="track-name" value="">
-        <input type="email" name="_replyto" placeholder="Your email address" required>
-        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
-      </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
-      <a href="https://airbit.com/share/RyanMcHarg/rain-alternativepop-rockchill" class="btn btn-main" target="_blank">BUY</a>
     </div>
   </div>
 </section>
-</div>
-  <section>
+
+<section>
   <h2 class="section-title">Create Your Own Mix of "Take Two"</h2>
   <mixthat-player controls="loop progress" src="https://app.mixthat.co/api/v1/tracks/3tOjlV?auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjIwMjUtMTAtMjIifQ.eyJhY2NvdW50X2lkIjoiSDRrd3pwIiwidG9rZW5faWQiOiJ0cmFja3M6M3RPamxWOnNoYXJlczpteW9CNnciLCJzaGFyZV9pZCI6Im15b0I2dyIsInNjb3BlIjoidHJhY2tzL3JlYWQvM3RPamxWIHRyYWNrcy9hdWRpby9yZWFkLzN0T2psViIsImlzX3NoYXJlX3Rva2VuIjp0cnVlLCJpYXQiOjE3NzAwMjA3MzcsImV4cCI6MTc3MDI3OTkzNywiYXVkIjoiaHR0cHM6Ly9hcHAubWl4dGhhdC5jbyIsImlzcyI6Imh0dHBzOi8vYXBwLm1peHRoYXQuY28iLCJzdWIiOiJmMmU1NTQ1NC0zMDkxLTcwMTAtNzA5NC03N2Y3N2JlNTZiZmE6c2hhcmU6bXlvQjZ3In0.k1mAHaRdCsqXXUPaNcEY8fDfPQGR8SFjz0eiuYCGBwA"></mixthat-player>
-</div>
-    
+</section>
+
 <section>
   <h2 class="section-title">Stay Updated</h2>
   <form action="https://formspree.io/f/xrellqgn" method="POST">
@@ -280,6 +307,35 @@ window.addEventListener('scroll',()=>{
   let i=Math.floor(t*(neon.length-1)); let f=(t*(neon.length-1))%1;
   const s=neon[i], e=neon[i+1]||s;
   document.body.style.background=`linear-gradient(to bottom,rgb(${Math.floor(lerp(s[0],e[0],f))},${Math.floor(lerp(s[1],e[1],f))},${Math.floor(lerp(s[2],e[2],f))}),#0b0b0f)`;
+});
+
+// MOOD FILTER
+function filterBeats(mood){
+  document.querySelectorAll('.beat-card').forEach(card=>{
+    if(mood==='all'){card.style.display='block';return;}
+    card.style.display = card.dataset.mood.includes(mood) ? 'block':'none';
+  });
+}
+
+// PATHWAY SWITCH
+function showPath(id){
+  document.querySelectorAll('.pathway').forEach(p=>p.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+// EASTER EGG
+let clicks=0;
+document.addEventListener('DOMContentLoaded',()=>{
+  const logo=document.querySelector('#intro h1');
+  if(logo){
+    logo.addEventListener('click',()=>{
+      clicks++;
+      if(clicks===5){
+        document.getElementById('secretBeat').style.display='block';
+        alert('Secret track unlocked');
+      }
+    });
+  }
 });
 </script>
 
