@@ -52,7 +52,7 @@ body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidd
 .hero p{font-size:20px;color:#aaa;margin:20px 0}
 
 /* BUTTONS */
-.btn{display:inline-block;padding:12px 26px;border-radius:30px;font-weight:600;text-decoration:none;margin:10px 8px 0 0;transition:.3s;font-size:14px}
+.btn{display:inline-block;padding:12px 26px;border-radius:30px;font-weight:600;text-decoration:none;margin:10px 8px 0 0;transition:.3s;font-size:14px;cursor:pointer}
 .btn-main{background:#00f0ff;color:#000}
 .btn-main:hover{box-shadow:0 0 15px #00f0ff;transform:scale(1.05)}
 .btn-alt{border:2px solid #ff00ea;color:#ff00ea}
@@ -74,6 +74,10 @@ iframe{border-radius:8px;width:100%;z-index:0;position:relative}
 textarea,input{width:100%;border-radius:8px;padding:10px;margin:10px 0;border:none;font-family:'Poppins',sans-serif}
 footer{text-align:center;padding:40px;background:#000;color:#666}
 
+/* Initially hide desktop form textarea */
+.desktop-form textarea,.desktop-form button{display:none}
+
+/* Mobile styling */
 @media(max-width:800px){
 .hero h1{font-size:42px}
 .about{grid-template-columns:1fr}
@@ -127,6 +131,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   <h2 class="section-title">Demos & Beats</h2>
   <div class="grid">
 
+    <!-- HYPE -->
     <div class="card" data-title="HYPE">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
 
@@ -136,15 +141,16 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="email" name="_replyto" placeholder="Your email address" required>
         <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
         <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt">CUSTOMISE</button>
+        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
       </form>
 
       <!-- Mobile mailto -->
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
 
       <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
+    <!-- SAUDADEE -->
     <div class="card" data-title="SAUDADEE">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
 
@@ -153,10 +159,10 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="email" name="_replyto" placeholder="Your email address" required>
         <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
         <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt">CUSTOMISE</button>
+        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
       </form>
 
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
 
       <a href="https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx" class="btn btn-main" target="_blank">BUY</a>
     </div>
@@ -179,17 +185,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const mailtoBtn = card.querySelector('.mobile-mailto');
     const form = card.querySelector('.desktop-form');
     const trackInput = form ? form.querySelector('.track-name') : null;
+    const textarea = form ? form.querySelector('textarea') : null;
+    const showBtn = form ? form.querySelector('.show-textarea') : null;
 
     if(trackInput) trackInput.value = title;
 
-    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in the track '${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20changes:%20____%0AThanks`;
+    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in the track '${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20ideas%20or%20changes%20here:%20____%0AThanks`;
 
     if(isMobile()){
       if(mailtoBtn){ mailtoBtn.href = mailtoLink; mailtoBtn.style.display='inline-block'; }
       if(form) form.style.display='none';
     } else {
       if(mailtoBtn) mailtoBtn.style.display='none';
-      if(form) form.style.display='block';
+      if(form){
+        form.style.display='block';
+        // Initially hide textarea and submit
+        if(textarea) textarea.style.display='none';
+        if(showBtn) showBtn.addEventListener('click', ()=>{
+          textarea.style.display='block';
+          showBtn.style.display='none';
+        });
+      }
     }
   });
 });
