@@ -17,7 +17,6 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Poppins',sans-serif;background:#0b0b0f;color:#fff;overflow-x:hidden;transition:background 0.3s}
-
 #intro{position:fixed;width:100%;height:100vh;background:#000;display:flex;justify-content:center;align-items:center;z-index:9999;animation:fadeOut 1s ease 2s forwards}
 #intro h1{font-size:110px;font-weight:800;letter-spacing:8px;background:linear-gradient(90deg,#00f0ff,#ff00ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
@@ -82,12 +81,12 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   <div class="grid">
 
     <div class="card">
-      <h3>TAKE TWO</h3>
+      <h3>HYPE</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ohonetwothree/take-two"></iframe>
     </div>
 
     <div class="card">
-      <h3>SO EASY</h3>
+      <h3>SAUDADEE</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/the-sweetest-revenge-is-letting-go-apod-demo"></iframe>
     </div>
 
@@ -99,38 +98,36 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   <h2 class="section-title">Demos & Beats</h2>
   <div class="grid">
 
-    <div class="card" data-title="Beat 1">
+    <div class="card" data-title="HYPE">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
 
       <!-- Desktop Form -->
       <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:none;">
-        <input type="hidden" name="track" value="Beat 1">
+        <input type="hidden" name="track" class="track-name" value="">
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <input type="hidden" name="_replyto" value="">
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
       <!-- Mobile mailto -->
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'Beat%201'%20and%20would%20like%20to%20customise%20it.%0APlease%20specify%20any%20changes:%20____%0AThanks" 
-         class="btn btn-alt mobile-mailto">
+      <a href="#" class="btn btn-alt mobile-mailto">
          CUSTOMISE
       </a>
 
       <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20purchasing%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
     </div>
 
-    <div class="card" data-title="Beat 2">
+    <div class="card" data-title="SAUDADEE">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
 
       <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:none;">
-        <input type="hidden" name="track" value="Beat 2">
+        <input type="hidden" name="track" class="track-name" value="">
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <input type="hidden" name="_replyto" value="">
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'Beat%202'%20and%20would%20like%20to%20customise%20it.%0APlease%20specify%20any%20changes:%20____%0AThanks" 
-         class="btn btn-alt mobile-mailto">
+      <a href="#" class="btn btn-alt mobile-mailto">
          CUSTOMISE
       </a>
 
@@ -143,35 +140,30 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <footer>© 2026 Ryan McHarg — Production</footer>
 
 <script>
-// Mobile detection & swap desktop form
+// MOBILE DETECTION
 function isMobile(){ return /Mobi|Android/i.test(navigator.userAgent); }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-  if(!isMobile()){
-    document.querySelectorAll('.card').forEach(card=>{
-      const mailtoBtn = card.querySelector('.mobile-mailto');
-      const form = card.querySelector('.desktop-form');
-      if(mailtoBtn && form){
-        mailtoBtn.style.display='none';
-        form.style.display='block';
-      }
-    });
-  }
+  document.querySelectorAll('.card').forEach(card=>{
+    const title = card.dataset.title;
+    const mailtoBtn = card.querySelector('.mobile-mailto');
+    const form = card.querySelector('.desktop-form');
+    const trackInput = form ? form.querySelector('.track-name') : null;
+
+    if(trackInput) trackInput.value = title;
+
+    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'${encodeURIComponent(title)}'%20and%20would%20like%20to%20customise%20it.%0APlease%20specify%20any%20changes:%20____%0AThanks`;
+
+    if(mailtoBtn) mailtoBtn.href = mailtoLink;
+
+    if(!isMobile() && form && mailtoBtn){
+      mailtoBtn.style.display='none';
+      form.style.display='block';
+    }
+  });
 });
 
-// Scroll gradient effect
+// SCROLL GRADIENT BACKGROUND
 const hero = document.getElementById('hero');
-window.addEventListener('scroll', ()=>{
-  const scroll = window.scrollY;
-  const height = document.body.scrollHeight - window.innerHeight;
-  const percent = scroll/height;
-  // interpolate between neural cool and crazy neon
-  hero.style.background = `linear-gradient(circle at top left, 
-    rgba(${Math.floor(50 + 150*percent)},${Math.floor(100 + 100*percent)},${Math.floor(200 - 50*percent)},1),
-    rgba(${Math.floor(0 + 255*percent)},${Math.floor(255 - 100*percent)},${Math.floor(200*percent)},1)
-  )`;
-});
-</script>
-
-</body>
-</html>
+const topColor = [50,100,200]; // neural cool
+const bottomColor = [255,20,200]; // crazy
