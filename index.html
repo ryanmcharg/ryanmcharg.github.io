@@ -71,12 +71,14 @@ section{padding:100px 10%}
 .about img{width:100%;border-radius:10px}
 
 iframe{border-radius:8px;width:100%;z-index:0;position:relative}
-textarea{width:100%;border-radius:8px;padding:10px;margin:10px 0;border:none;font-family:'Poppins',sans-serif}
+textarea,input{width:100%;border-radius:8px;padding:10px;margin:10px 0;border:none;font-family:'Poppins',sans-serif}
 footer{text-align:center;padding:40px;background:#000;color:#666}
 
 @media(max-width:800px){
 .hero h1{font-size:42px}
 .about{grid-template-columns:1fr}
+.desktop-form{display:none !important;}
+.mobile-mailto{display:inline-block !important;}
 }
 </style>
 </head>
@@ -128,12 +130,12 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
     <div class="card" data-title="HYPE">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
 
-      <!-- Desktop Form with textarea -->
-      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:block;margin-top:10px;">
+      <!-- Desktop Formspree -->
+      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="display:block;margin-top:10px;">
         <input type="hidden" name="track" class="track-name" value="">
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <input type="hidden" name="_replyto" value="">
+        <input type="email" name="_replyto" placeholder="Your email address" required>
         <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
+        <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
@@ -146,11 +148,11 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
     <div class="card" data-title="SAUDADEE">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
 
-      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:block;margin-top:10px;">
+      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="display:block;margin-top:10px;">
         <input type="hidden" name="track" class="track-name" value="">
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <input type="hidden" name="_replyto" value="">
+        <input type="email" name="_replyto" placeholder="Your email address" required>
         <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
+        <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
