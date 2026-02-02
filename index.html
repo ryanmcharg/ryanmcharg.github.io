@@ -74,8 +74,8 @@ iframe{border-radius:8px;width:100%;z-index:0;position:relative}
 textarea,input{width:100%;border-radius:8px;padding:10px;margin:10px 0;border:none;font-family:'Poppins',sans-serif}
 footer{text-align:center;padding:40px;background:#000;color:#666}
 
-/* Initially hide desktop form textarea */
-.desktop-form textarea,.desktop-form button{display:none}
+/* Hide desktop textarea and submit until CUSTOMISE clicked */
+.desktop-form textarea,.desktop-form button.submit-btn{display:none}
 
 /* Mobile styling */
 @media(max-width:800px){
@@ -142,6 +142,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
+        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
       </form>
 
       <!-- Mobile mailto -->
@@ -160,6 +161,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
+        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
       </form>
 
       <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
@@ -187,6 +189,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const trackInput = form ? form.querySelector('.track-name') : null;
     const textarea = form ? form.querySelector('textarea') : null;
     const showBtn = form ? form.querySelector('.show-textarea') : null;
+    const submitBtn = form ? form.querySelector('.submit-btn') : null;
 
     if(trackInput) trackInput.value = title;
 
@@ -199,10 +202,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
       if(mailtoBtn) mailtoBtn.style.display='none';
       if(form){
         form.style.display='block';
-        // Initially hide textarea and submit
         if(textarea) textarea.style.display='none';
+        if(submitBtn) submitBtn.style.display='none';
         if(showBtn) showBtn.addEventListener('click', ()=>{
           textarea.style.display='block';
+          submitBtn.style.display='inline-block';
           showBtn.style.display='none';
         });
       }
