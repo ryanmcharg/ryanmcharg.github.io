@@ -347,14 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
   trigger.addEventListener('click', () => {
     clicks++;
     if (clicks === 5) {
-      secretDiv.style.display = 'block';
+  document.getElementById('secretBeat').style.display = 'block';
+}
 
-      const p = secretAudio.play();
-      if (p !== undefined) {
-        p.catch(() => {
-          console.log("Autoplay blocked — user can press play.");
-        });
-      }
     }
   });
 });
