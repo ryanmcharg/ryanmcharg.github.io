@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ryan McHarg | Producer</title>
+<title>Ryan McHarg | Musical Portfolio</title>
 
 <!-- FAVICONS -->
 <link rel="icon" href="favicon.ico">
@@ -15,14 +15,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidden;transition:background 0.3s}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidden;scroll-behavior:smooth;transition:background 0.3s}
 
-/* INTRO */
+/* INTRO ANIMATION */
 #intro{
   position:fixed;width:100%;height:100vh;background:#000;
-  display:flex;justify-content:center;align-items:center;
-  z-index:9999;
+  display:flex;justify-content:center;align-items:center;z-index:9999;
   animation:fadeOut 1s ease 2s forwards;
 }
 #intro h1{
@@ -47,9 +46,22 @@ body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidd
 }
 
 /* HERO */
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 10%;transition:background 0.5s}
+.hero{
+  height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 10%;position:relative;overflow:hidden
+}
 .hero h1{font-size:60px;font-weight:800;background:linear-gradient(90deg,#00f0ff,#ff00ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:20px;color:#aaa;margin:20px 0}
+.hero p{font-size:20px;color:#aaa;margin:20px 0;z-index:2;position:relative}
+.hero .btn{z-index:2;position:relative}
+.hero::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(45deg,rgba(0,0,0,0.3),rgba(255,255,255,0.05),rgba(0,0,0,0.3));
+  background-size:200% 200%;animation:heroBG 10s linear infinite;z-index:1;
+}
+@keyframes heroBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
 /* BUTTONS */
 .btn{display:inline-block;padding:12px 26px;border-radius:30px;font-weight:600;text-decoration:none;margin:10px 8px 0 0;transition:.3s;font-size:14px;cursor:pointer}
@@ -59,12 +71,14 @@ body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidd
 .btn-alt:hover{background:#ff00ea;color:#000}
 
 /* SECTIONS */
-section{padding:100px 10%}
+section{padding:100px 10%;opacity:0;transform:translateY(50px);transition:opacity 1s ease, transform 1s ease}
 .section-title{font-size:38px;margin-bottom:40px;border-left:5px solid #00f0ff;padding-left:15px}
 
 /* GRID & CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;position:relative}
-.card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth}
+.grid::-webkit-scrollbar{height:8px}
+.grid::-webkit-scrollbar-thumb{background:#00f0ff;border-radius:4px}
+.card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1;scroll-snap-align:start}
 .card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
 
 .about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
@@ -87,9 +101,14 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 .about{grid-template-columns:1fr}
 .desktop-form{display:none !important;}
 .mobile-mailto{display:inline-block !important;}
+.grid{overflow-x:auto;grid-template-columns:repeat(auto-fit,minmax(80%,1fr));}
 }
+
+/* Floating social icons */
+.social-icons{position:fixed;top:40%;right:20px;display:flex;flex-direction:column;gap:15px;z-index:10}
+.social-icons a{color:#00f0ff;font-size:22px;transition:.3s}
+.social-icons a:hover{color:#ff00ea;transform:scale(1.2)}
 </style>
-</head>
 
 <body>
 
@@ -97,25 +116,30 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 
 <div class="hero" id="hero">
   <h1>Ryan McHarg</h1>
-  <p>Music Producer • Mixing • Custom Production</p>
+  <p>a musical portfolio.</p>
+  <p>Listen below for Ryan's solo, collaborative, and sync works</p>
   <a href="#music" class="btn btn-main">Listen</a>
   <a href="#store" class="btn btn-alt">Buy Beats</a>
+</div>
+
+<!-- SOCIAL ICONS -->
+<div class="social-icons">
+  <a href="https://instagram.com/yourhandle" target="_blank">IG</a>
 </div>
 
 <section>
   <h2 class="section-title">About</h2>
   <div class="about">
     <div>
-      <p>I create modern, emotionally-driven production with punch, depth, and clarity.</p><br>
-      <p>Available for production, mixing, and collaboration.</p><br>
-      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more.</p><br>
+      <p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations!</p>
+      <p>Available for production, mixing, and collaboration.</p>
+      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more.</p>
       <p>All projects include stems, revisions, and high-resolution WAV masters (24-bit).</p>
     </div>
-    <img src="https://visualsproducer.wordpress.com/wp-content/uploads/2023/02/lpx-pro-q3.jpg?w=1024">
+    <img src="ryan2.jpeg" alt="Studio photo">
   </div>
 </section>
 
-<!-- FEATURED TRACKS -->
 <section id="music">
   <h2 class="section-title">Featured Work</h2>
   <div class="grid">
@@ -134,7 +158,6 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   </div>
 </section>
 
-<!-- STORE -->
 <section id="store">
   <h2 class="section-title">Demos & Beats</h2>
   <div class="grid">
@@ -142,9 +165,8 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
     <!-- HYPE -->
     <div class="card" data-title="HYPE">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
-
-      <!-- Desktop Formspree -->
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="display:block;margin-top:10px;">
+      <p>Genre: Hyperpop/House | BPM: 120 | Mood: Energetic</p>
+      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
         <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
         <input type="hidden" name="track" class="track-name" value="">
         <input type="email" name="_replyto" placeholder="Your email address" required>
@@ -152,18 +174,15 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
       </form>
-
-      <!-- Mobile mailto -->
       <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
-
       <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
     <!-- SAUDADEE -->
     <div class="card" data-title="SAUDADEE">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
-
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="display:block;margin-top:10px;">
+      <p>Genre: Hip-Hop/Latin | BPM: 95 | Mood: Chill</p>
+      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
         <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
         <input type="hidden" name="track" class="track-name" value="">
         <input type="email" name="_replyto" placeholder="Your email address" required>
@@ -171,16 +190,23 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
       </form>
-
       <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
-
       <a href="https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
   </div>
 </section>
 
-<footer>© 2026 Ryan McHarg — Production</footer>
+<!-- NEWSLETTER -->
+<section>
+  <h2 class="section-title">Stay Updated</h2>
+  <form action="https://formspree.io/f/xrellqgn" method="POST">
+    <input type="email" name="_replyto" placeholder="Your email address" required>
+    <button type="submit" class="btn btn-main">Subscribe</button>
+  </form>
+</section>
+
+<footer>© 2026 Ryan McHarg — Production | Contact: ryan0903@hotmail.co.uk</footer>
 
 <script>
 // SCROLL TO TOP ON REFRESH
@@ -202,7 +228,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     if(trackInput) trackInput.value = title;
 
-    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in the track '${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20ideas%20or%20changes%20here:%20____%0AThanks`;
+    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20ideas%20or%20changes%20here:%20____%0AThanks`;
 
     if(isMobile()){
       if(mailtoBtn){ mailtoBtn.href = mailtoLink; mailtoBtn.style.display='inline-block'; }
@@ -214,7 +240,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         emailInput.style.display='none';
         textarea.style.display='none';
         submitBtn.style.display='none';
-
         if(showBtn) showBtn.addEventListener('click', ()=>{
           emailInput.style.display='block';
           textarea.style.display='block';
@@ -224,26 +249,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
     }
   });
+
+  // Fade-in sections on scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity='1';
+        entry.target.style.transform='translateY(0)';
+      }
+    });
+  }, {threshold:0.1});
+  sections.forEach(sec=>observer.observe(sec));
 });
 
-// CRAZY NEON SCROLL GRADIENT (dark top → bright bottom)
+// CRAZY NEON SCROLL GRADIENT
 const neonColors = [
-  [0,0,0],
-  [10,10,30],
-  [20,10,60],
-  [40,20,90],
-  [80,40,150],
-  [255,0,255],
-  [255,255,0]
+  [0,0,0],[10,10,30],[20,10,60],[40,20,90],[80,40,150],[255,0,255],[255,255,0]
 ];
-
 window.addEventListener('scroll', ()=>{
   const scroll = window.scrollY;
   const height = document.body.scrollHeight - window.innerHeight;
   const t = Math.min(scroll/height,1);
-
   function lerp(a,b,f){ return a + (b-a)*f; }
-
   let idx = Math.floor(t*(neonColors.length-1));
   let f = (t*(neonColors.length-1)) % 1;
   const start = neonColors[idx];
@@ -251,7 +279,6 @@ window.addEventListener('scroll', ()=>{
   const r = Math.floor(lerp(start[0],end[0],f));
   const g = Math.floor(lerp(start[1],end[1],f));
   const b = Math.floor(lerp(start[2],end[2],f));
-
   document.body.style.background = `linear-gradient(to bottom, rgb(${r},${g},${b}), #0b0b0f)`;
 });
 </script>
