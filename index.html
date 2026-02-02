@@ -25,14 +25,12 @@ body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidd
   z-index:9999;
   animation:fadeOut 1s ease 2s forwards;
 }
-
 #intro h1{
   font-size:110px;font-weight:800;letter-spacing:8px;
   background:linear-gradient(90deg,#00f0ff,#ff00ea);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   animation:fontFlicker 2s steps(20) forwards;
 }
-
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
 @keyframes fontFlicker{
   0%{font-family:'Poppins',sans-serif}
@@ -73,6 +71,7 @@ section{padding:100px 10%}
 .about img{width:100%;border-radius:10px}
 
 iframe{border-radius:8px;width:100%;z-index:0;position:relative}
+textarea{width:100%;border-radius:8px;padding:10px;margin:10px 0;border:none;font-family:'Poppins',sans-serif}
 footer{text-align:center;padding:40px;background:#000;color:#666}
 
 @media(max-width:800px){
@@ -110,17 +109,14 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <section id="music">
   <h2 class="section-title">Featured Work</h2>
   <div class="grid">
-
     <div class="card">
       <h3>HYPE</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ohonetwothree/take-two"></iframe>
     </div>
-
     <div class="card">
       <h3>SAUDADEE</h3>
       <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/the-sweetest-revenge-is-letting-go-apod-demo"></iframe>
     </div>
-
   </div>
 </section>
 
@@ -132,11 +128,12 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
     <div class="card" data-title="HYPE">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
 
-      <!-- Desktop Form -->
+      <!-- Desktop Form with textarea -->
       <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:block;margin-top:10px;">
         <input type="hidden" name="track" class="track-name" value="">
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <input type="hidden" name="_replyto" value="">
+        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
@@ -153,6 +150,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="hidden" name="track" class="track-name" value="">
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <input type="hidden" name="_replyto" value="">
+        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
@@ -168,9 +166,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 
 <script>
 // SCROLL TO TOP ON REFRESH
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+window.onbeforeunload = function () { window.scrollTo(0, 0); }
 
 // MOBILE DETECTION & EMAIL CUSTOMISE
 function isMobile(){ return /Mobi|Android/i.test(navigator.userAgent); }
@@ -187,7 +183,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in the track '${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20changes:%20____%0AThanks`;
 
     if(isMobile()){
-      if(mailtoBtn) { mailtoBtn.href = mailtoLink; mailtoBtn.style.display='inline-block'; }
+      if(mailtoBtn){ mailtoBtn.href = mailtoLink; mailtoBtn.style.display='inline-block'; }
       if(form) form.style.display='none';
     } else {
       if(mailtoBtn) mailtoBtn.style.display='none';
@@ -198,13 +194,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 // CRAZY NEON SCROLL GRADIENT (dark top → bright bottom)
 const neonColors = [
-  [0,0,0],       // black top
-  [25,25,50],
-  [50,25,75],
-  [75,50,125],
-  [150,50,200],
-  [255,0,255],   // violet at very bottom
-  [255,255,0]    // bright yellow very bottom
+  [0,0,0],
+  [10,10,30],
+  [20,10,60],
+  [40,20,90],
+  [80,40,150],
+  [255,0,255],
+  [255,255,0]
 ];
 
 window.addEventListener('scroll', ()=>{
