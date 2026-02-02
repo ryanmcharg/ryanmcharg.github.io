@@ -6,160 +6,104 @@
 <title>Ryan McHarg | Music Producer • Mixing • Custom Production</title>
 
 <style>
-:root {
-  --dark1:#050505;
-  --dark2:#0b0b12;
-  --dark3:#111118;
-}
-
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth;}
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  color:white;
-  background:
-  linear-gradient(to bottom,
-  #000000 0%,
-  #080811 20%,
-  #11111a 40%,
-  #1a0f1f 60%,
-  #24102a 75%,
-  #2e0835 85%,
-  #3a0044 92%,
-  #ff0000 96%,
-  #ff7b00 97%,
-  #ffee00 98%,
-  #00ff00 99%,
-  #00e5ff 99.5%,
-  #8a2be2 100%);
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Helvetica,Arial,sans-serif;
+color:#fff;
+background:linear-gradient(to bottom,
+#000000 0%,
+#07070d 20%,
+#0f0f18 40%,
+#1a0f1f 55%,
+#24102a 70%,
+#2e0835 82%,
+#3a0044 90%,
+#ff0000 95%,
+#ff7b00 96%,
+#ffee00 97%,
+#00ff00 98%,
+#00e5ff 99%,
+#8a2be2 100%);
 }
 
 /* INTRO */
-#intro {
-  position:fixed;
-  inset:0;
-  background:black;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  animation:fadeOut 2.5s forwards 2s;
+#intro{
+position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999;
+animation:fadeOut 2s forwards 2.2s;
 }
-#intro h1 {
-  font-size:4rem;
-  letter-spacing:10px;
-  animation:flicker 1.5s infinite alternate;
+#intro h1{
+font-size:4rem;letter-spacing:12px;color:#fff;
+animation:fontFlicker .12s infinite alternate;
 }
-@keyframes flicker {
-  from{opacity:.2;text-shadow:0 0 5px white;}
-  to{opacity:1;text-shadow:0 0 25px white;}
+@keyframes fontFlicker{
+0%{font-family:Arial}
+25%{font-family:Courier New}
+50%{font-family:Georgia}
+75%{font-family:Verdana}
+100%{font-family:Tahoma}
 }
-@keyframes fadeOut {to{opacity:0;visibility:hidden;}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
 
 /* HERO */
-header {
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
+header{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
 header::before{
-  content:"";
-  position:absolute;
-  inset:-50%;
-  background:radial-gradient(circle at center,rgba(0,255,255,.15),transparent 60%);
-  animation:rotate 20s linear infinite;
+content:"";position:absolute;inset:-40%;
+background:radial-gradient(circle,rgba(0,255,255,.12),transparent 60%);
+animation:spin 18s linear infinite;
 }
-@keyframes rotate{to{transform:rotate(360deg)}}
-header h1{
-  font-size:3rem;
-  z-index:1;
-}
-header p{opacity:.7;margin-top:10px;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+header h1{font-size:3rem;z-index:1}
+header p{opacity:.75;margin-top:10px}
 
 /* SECTIONS */
-section{padding:120px 10%;position:relative}
-h2{text-align:center;margin-bottom:60px;font-size:2rem}
+section{padding:120px 10%}
+h2{text-align:center;margin-bottom:60px;font-size:2rem;letter-spacing:2px}
 
-/* GLASS CARDS */
+/* CARDS */
 .card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:20px;
-  padding:30px;
-  transition:.4s;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.12);
+border-radius:20px;
+padding:30px;
+transition:.4s;
 }
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 30px rgba(255,0,255,.5);
-}
+.card:hover{transform:translateY(-8px);box-shadow:0 0 35px rgba(255,0,255,.5)}
 
 /* ABOUT */
-.about-wrap{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:50px;
-}
-.about-wrap img{
-  width:350px;
-  border-radius:20px;
-  box-shadow:0 0 40px rgba(0,255,255,.3);
-}
+.about-wrap{display:flex;flex-wrap:wrap;gap:50px;align-items:center}
+.about-wrap img{width:360px;border-radius:20px;box-shadow:0 0 40px rgba(0,255,255,.35)}
 
-/* TRACKS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-iframe{width:100%;border-radius:12px}
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px}
 
 /* BUTTONS */
 button{
-  margin-top:15px;
-  padding:12px 22px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:bold;
-  transition:.3s;
+margin-top:15px;padding:12px 22px;border-radius:30px;border:none;
+font-weight:bold;cursor:pointer;transition:.3s
 }
-.buy{background:linear-gradient(45deg,#ff00ff,#00ffff);color:black;}
-.custom{background:black;color:white;border:1px solid white;}
+.buy{background:linear-gradient(45deg,#ff00ff,#00ffff);color:#000}
+.custom{background:#000;color:#fff;border:1px solid #fff}
 button:hover{box-shadow:0 0 20px cyan;transform:scale(1.05)}
 
-/* FORM POPUP */
-#formPopup{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  justify-content:center;
-  align-items:center;
-  z-index:10000;
+/* POPUP FORM */
+#popup{
+display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);
+justify-content:center;align-items:center;z-index:10000;
 }
-#formPopup form{
-  background:#111;
-  padding:40px;
-  border-radius:20px;
-  width:400px;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
+#popup form{
+background:#111;padding:40px;border-radius:20px;width:420px;
+display:flex;flex-direction:column;gap:15px;
 }
 
 /* ANIMATIONS */
 .fade{opacity:0;transform:translateY(40px);transition:1s}
 .fade.show{opacity:1;transform:none}
 
-/* MOBILE */
-@media(max-width:768px){
-  .desktop-only{display:none}
-}
-@media(min-width:769px){
-  .mobile-only{display:none}
-}
+/* RESPONSIVE */
+@media(max-width:768px){.desktop{display:none}}
+@media(min-width:769px){.mobile{display:none}}
 </style>
 </head>
 
@@ -168,71 +112,78 @@ button:hover{box-shadow:0 0 20px cyan;transform:scale(1.05)}
 <div id="intro"><h1>RM</h1></div>
 
 <header>
-  <div>
-    <h1>Ryan McHarg</h1>
-    <p>Music Producer • Mixing • Custom Production</p>
-  </div>
+<div>
+<h1>Ryan McHarg</h1>
+<p>Music Producer • Mixing • Custom Production</p>
+</div>
 </header>
 
 <section class="fade">
-  <h2>ABOUT</h2>
-  <div class="about-wrap">
-    <img src="https://visualsproducer.wordpress.com/wp-content/uploads/2023/02/lpx-pro-q3.jpg?w=1024">
-    <div class="card">
-      <p>Producer and mix engineer focused on modern, emotionally driven sound design, cinematic depth, and industry-ready mixes.</p>
-      <br>
-      <p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations.</p>
-    </div>
-  </div>
+<h2>ABOUT</h2>
+<div class="about-wrap">
+<img src="https://visualsproducer.wordpress.com/wp-content/uploads/2023/02/lpx-pro-q3.jpg?w=1024">
+<div class="card">
+<p>Producer and mix engineer focused on modern, emotionally driven sound design, cinematic depth, and industry-ready mixes.</p><br>
+<p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations.</p>
+</div>
+</div>
 </section>
 
 <section class="fade">
-  <h2>FEATURED TRACKS</h2>
-  <div class="grid">
-    <iframe src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com"></iframe>
-  </div>
+<h2>FEATURED WORK</h2>
+<div class="grid">
+<div class="card"><h3>Featured Track</h3><p>Not for sale</p></div>
+</div>
 </section>
 
 <section class="fade">
-  <h2>BEAT STORE</h2>
-  <div class="grid">
+<h2>BEAT STORE</h2>
+<div class="grid">
 
-    <div class="card">
-      <h3>HYPE — 126 BPM</h3>
-      <button class="buy" onclick="window.open('https://airbit.com')">BUY</button>
-      <button class="custom desktop-only" onclick="openForm()">CUSTOMISE</button>
-      <a href="mailto:?subject=Custom Beat HYPE" class="mobile-only"><button class="custom">CUSTOMISE</button></a>
-    </div>
+<div class="card">
+<h3>HYPE — 126 BPM</h3>
+<button class="buy" onclick="window.open('https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel')">BUY</button>
 
-    <div class="card">
-      <h3>SAUDADE — 121 BPM</h3>
-      <button class="buy" onclick="window.open('https://airbit.com')">BUY</button>
-      <button class="custom desktop-only" onclick="openForm()">CUSTOMISE</button>
-      <a href="mailto:?subject=Custom Beat SAUDADE" class="mobile-only"><button class="custom">CUSTOMISE</button></a>
-    </div>
+<button class="custom desktop" onclick="openForm('HYPE')">CUSTOMISE</button>
 
-  </div>
+<a class="mobile" href="mailto:?subject=Custom Beat HYPE&body=Please specify any ideas or changes here:">
+<button class="custom">CUSTOMISE</button></a>
+</div>
+
+<div class="card">
+<h3>SAUDADE — 121 BPM</h3>
+<button class="buy" onclick="window.open('https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx')">BUY</button>
+
+<button class="custom desktop" onclick="openForm('SAUDADE')">CUSTOMISE</button>
+
+<a class="mobile" href="mailto:?subject=Custom Beat SAUDADE&body=Please specify any ideas or changes here:">
+<button class="custom">CUSTOMISE</button></a>
+</div>
+
+</div>
 </section>
 
-<div id="formPopup">
-  <form action="https://formspree.io/f/xrellqgn" method="POST">
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Project details"></textarea>
-    <button type="submit">Send</button>
-    <button type="button" onclick="closeForm()">Close</button>
-  </form>
+<div id="popup">
+<form action="https://formspree.io/f/xrellqgn" method="POST">
+<input type="hidden" name="track" id="trackName">
+<input type="email" name="email" placeholder="Your email" required>
+<textarea name="message" placeholder="Please specify any ideas or changes here:"></textarea>
+<button type="submit">Send</button>
+<button type="button" onclick="closeForm()">Close</button>
+</form>
 </div>
 
 <script>
-window.onbeforeunload=function(){window.scrollTo(0,0);}
+window.onbeforeunload=()=>window.scrollTo(0,0)
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
-})
-document.querySelectorAll('.fade').forEach(el=>observer.observe(el))
+const obs=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting&&x.target.classList.add('show'))})
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el))
 
-function openForm(){document.getElementById('formPopup').style.display='flex'}
-function closeForm(){document.getElementById('formPopup').style.display='none'}
+function openForm(track){
+document.getElementById('trackName').value=track
+document.getElementById('popup').style.display='flex'
+}
+function closeForm(){document.getElementById('popup').style.display='none'}
 </script>
 
 </body>
