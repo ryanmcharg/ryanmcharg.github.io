@@ -3,288 +3,236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ryan McHarg | Musical Portfolio</title>
-
-<!-- FAVICONS -->
-<link rel="icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<title>Ryan McHarg | Music Producer • Mixing • Custom Production</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidden;scroll-behavior:smooth;transition:background 0.3s}
+:root {
+  --dark1:#050505;
+  --dark2:#0b0b12;
+  --dark3:#111118;
+}
 
-/* INTRO ANIMATION */
-#intro{
-  position:fixed;width:100%;height:100vh;background:#000;
-  display:flex;justify-content:center;align-items:center;z-index:9999;
-  animation:fadeOut 1s ease 2s forwards;
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth;}
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  color:white;
+  background:
+  linear-gradient(to bottom,
+  #000000 0%,
+  #080811 20%,
+  #11111a 40%,
+  #1a0f1f 60%,
+  #24102a 75%,
+  #2e0835 85%,
+  #3a0044 92%,
+  #ff0000 96%,
+  #ff7b00 97%,
+  #ffee00 98%,
+  #00ff00 99%,
+  #00e5ff 99.5%,
+  #8a2be2 100%);
 }
-#intro h1{
-  font-size:110px;font-weight:800;letter-spacing:8px;
-  background:linear-gradient(90deg,#00f0ff,#ff00ea);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:fontFlicker 2s steps(20) forwards;
+
+/* INTRO */
+#intro {
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:fadeOut 2.5s forwards 2s;
 }
-@keyframes fadeOut{to{opacity:0;visibility:hidden}}
-@keyframes fontFlicker{
-  0%{font-family:'Poppins',sans-serif}
-  10%{font-family:'Roboto',sans-serif}
-  20%{font-family:'Montserrat',sans-serif}
-  30%{font-family:'Oswald',sans-serif}
-  40%{font-family:'Poppins',sans-serif}
-  50%{font-family:'Roboto',sans-serif}
-  60%{font-family:'Montserrat',sans-serif}
-  70%{font-family:'Oswald',sans-serif}
-  80%{font-family:'Poppins',sans-serif}
-  90%{font-family:'Roboto',sans-serif}
-  100%{font-family:'Poppins',sans-serif}
+#intro h1 {
+  font-size:4rem;
+  letter-spacing:10px;
+  animation:flicker 1.5s infinite alternate;
 }
+@keyframes flicker {
+  from{opacity:.2;text-shadow:0 0 5px white;}
+  to{opacity:1;text-shadow:0 0 25px white;}
+}
+@keyframes fadeOut {to{opacity:0;visibility:hidden;}}
 
 /* HERO */
-.hero{
-  height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 10%;position:relative;overflow:hidden
+header {
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
 }
-.hero h1{font-size:60px;font-weight:800;background:linear-gradient(90deg,#00f0ff,#ff00ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero h2{font-size:22px;color:#aaa;margin:5px 0 20px 0;font-weight:500}
-.hero p{font-size:18px;color:#ccc;margin-bottom:20px;z-index:2;position:relative}
-.hero .btn{z-index:2;position:relative}
-.hero::before{
-  content:"";position:absolute;top:0;left:0;width:100%;height:100%;
-  background:linear-gradient(45deg,rgba(0,0,0,0.3),rgba(255,255,255,0.05),rgba(0,0,0,0.3));
-  background-size:200% 200%;animation:heroBG 10s linear infinite;z-index:1;
+header::before{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:radial-gradient(circle at center,rgba(0,255,255,.15),transparent 60%);
+  animation:rotate 20s linear infinite;
 }
-@keyframes heroBG{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+@keyframes rotate{to{transform:rotate(360deg)}}
+header h1{
+  font-size:3rem;
+  z-index:1;
 }
-
-/* BUTTONS */
-.btn{display:inline-block;padding:12px 26px;border-radius:30px;font-weight:600;text-decoration:none;margin:10px 8px 0 0;transition:.3s;font-size:14px;cursor:pointer}
-.btn-main{background:#00f0ff;color:#000}
-.btn-main:hover{box-shadow:0 0 15px #00f0ff;transform:scale(1.05)}
-.btn-alt{border:2px solid #ff00ea;color:#ff00ea}
-.btn-alt:hover{background:#ff00ea;color:#000}
+header p{opacity:.7;margin-top:10px;z-index:1}
 
 /* SECTIONS */
-section{padding:100px 10%;opacity:0;transform:translateY(50px);transition:opacity 1s ease, transform 1s ease}
-.section-title{font-size:38px;margin-bottom:40px;border-left:5px solid #00f0ff;padding-left:15px;display:flex;align-items:center;gap:10px}
+section{padding:120px 10%;position:relative}
+h2{text-align:center;margin-bottom:60px;font-size:2rem}
 
-/* GRID & CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth}
-.grid::-webkit-scrollbar{height:8px}
-.grid::-webkit-scrollbar-thumb{background:#00f0ff;border-radius:4px}
-.card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1;scroll-snap-align:start}
-.card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
+/* GLASS CARDS */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:30px;
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 30px rgba(255,0,255,.5);
+}
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:-50px;align-items:center}
-.about img{width:100%;border-radius:10px}
+/* ABOUT */
+.about-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:50px;
+}
+.about-wrap img{
+  width:350px;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,255,255,.3);
+}
 
-iframe{border-radius:8px;width:100%;z-index:0;position:relative}
-textarea,input{width:100%;border-radius:8px;padding:10px;margin:10px 0;border:none;font-family:'Poppins',sans-serif}
-footer{text-align:center;padding:40px;background:#000;color:#666}
+/* TRACKS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+iframe{width:100%;border-radius:12px}
 
-/* Hide desktop email and textarea until CUSTOMISE clicked */
-.desktop-form input[type=email],
-.desktop-form textarea,
-.desktop-form button.submit-btn{
+/* BUTTONS */
+button{
+  margin-top:15px;
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.3s;
+}
+.buy{background:linear-gradient(45deg,#ff00ff,#00ffff);color:black;}
+.custom{background:black;color:white;border:1px solid white;}
+button:hover{box-shadow:0 0 20px cyan;transform:scale(1.05)}
+
+/* FORM POPUP */
+#formPopup{
   display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
+}
+#formPopup form{
+  background:#111;
+  padding:40px;
+  border-radius:20px;
+  width:400px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
-/* Mobile styling */
-@media(max-width:800px){
-.hero h1{font-size:42px}
-.hero h2{font-size:18px}
-.about{grid-template-columns:1fr;margin-top:0}
-.desktop-form{display:none !important;}
-.mobile-mailto{display:inline-block !important;}
-.grid{overflow-x:auto;grid-template-columns:repeat(auto-fit,minmax(80%,1fr));}
-}
+/* ANIMATIONS */
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.fade.show{opacity:1;transform:none}
 
-/* Floating social icons */
-.social-icons{position:fixed;top:40%;right:20px;display:flex;flex-direction:column;gap:15px;z-index:10}
-.social-icons a{color:#00f0ff;font-size:22px;transition:.3s}
-.social-icons a:hover{color:#ff00ea;transform:scale(1.2)}
+/* MOBILE */
+@media(max-width:768px){
+  .desktop-only{display:none}
+}
+@media(min-width:769px){
+  .mobile-only{display:none}
+}
 </style>
+</head>
 
 <body>
 
 <div id="intro"><h1>RM</h1></div>
 
-<div class="hero" id="hero">
-  <h1>Ryan McHarg</h1>
-  <h2>Music Producer • Mixing • Custom Production</h2>
-  <p>A musical portfolio showcasing featured tracks, demos, and beats.</p>
-  <a href="#music" class="btn btn-main">Listen</a>
-  <a href="#store" class="btn btn-alt">Buy Beats</a>
-</div>
+<header>
+  <div>
+    <h1>Ryan McHarg</h1>
+    <p>Music Producer • Mixing • Custom Production</p>
+  </div>
+</header>
 
-<!-- SOCIAL ICONS -->
-<div class="social-icons">
-  <a href="https://instagram.com/yourhandle" target="_blank">IG</a>
-</div>
-
-<section>
-  <h2 class="section-title">About</h2>
-  <div class="about">
-    <div>
-      <p>I create modern, emotionally-driven production with punch, depth, and clarity. My focus is helping artists sound competitive while keeping their identity intact.</p>
-      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more. All projects include stems, free revisions, and high-resolution WAV masters (24-bit/44.1kHz or 48kHz/96kHz).</p>
-      <p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations!</p>
+<section class="fade">
+  <h2>ABOUT</h2>
+  <div class="about-wrap">
+    <img src="https://visualsproducer.wordpress.com/wp-content/uploads/2023/02/lpx-pro-q3.jpg?w=1024">
+    <div class="card">
+      <p>Producer and mix engineer focused on modern, emotionally driven sound design, cinematic depth, and industry-ready mixes.</p>
+      <br>
+      <p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations.</p>
     </div>
-    <img src="https://visualsproducer.wordpress.com/wp-content/uploads/2023/02/lpx-pro-q3.jpg?w=1024" alt="Studio photo">
   </div>
 </section>
 
-<section id="music">
-  <h2 class="section-title">Featured Work</h2>
+<section class="fade">
+  <h2>FEATURED TRACKS</h2>
   <div class="grid">
-    <div class="card">
-      <h3>TAKE TWO</h3>
-      <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ohonetwothree/take-two"></iframe>
-    </div>
-    <div class="card">
-      <h3>SO EASY (APOD Demo)</h3>
-      <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/the-sweetest-revenge-is-letting-go-apod-demo"></iframe>
-    </div>
-    <div class="card">
-      <h3>DREAMING IN AN UNDERPASS</h3>
-      <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/dreaming-in-an-underpass-instrumental"></iframe>
-    </div>
+    <iframe src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com"></iframe>
   </div>
 </section>
 
-<section id="store">
-  <h2 class="section-title">Demos & Beats</h2>
+<section class="fade">
+  <h2>BEAT STORE</h2>
   <div class="grid">
 
-    <!-- HYPE -->
-    <div class="card" data-title="HYPE">
-      <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
-      <p>Genre: Hyperpop/House | BPM: 120 | Mood: Energetic</p>
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
-        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
-        <input type="hidden" name="track" class="track-name" value="">
-        <input type="email" name="_replyto" placeholder="Your email address" required>
-        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
-      </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;"></a>
-      <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
+    <div class="card">
+      <h3>HYPE — 126 BPM</h3>
+      <button class="buy" onclick="window.open('https://airbit.com')">BUY</button>
+      <button class="custom desktop-only" onclick="openForm()">CUSTOMISE</button>
+      <a href="mailto:?subject=Custom Beat HYPE" class="mobile-only"><button class="custom">CUSTOMISE</button></a>
     </div>
 
-    <!-- SAUDADEE -->
-    <div class="card" data-title="SAUDADEE">
-      <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
-      <p>Genre: Hip-Hop/Latin | BPM: 95 | Mood: Chill</p>
-      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
-        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
-        <input type="hidden" name="track" class="track-name" value="">
-        <input type="email" name="_replyto" placeholder="Your email address" required>
-        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
-        <input type="hidden" name="_subject" value="Beat Customise Request">
-        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
-      </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;"></a>
-      <a href="https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx" class="btn btn-main" target="_blank">BUY</a>
+    <div class="card">
+      <h3>SAUDADE — 121 BPM</h3>
+      <button class="buy" onclick="window.open('https://airbit.com')">BUY</button>
+      <button class="custom desktop-only" onclick="openForm()">CUSTOMISE</button>
+      <a href="mailto:?subject=Custom Beat SAUDADE" class="mobile-only"><button class="custom">CUSTOMISE</button></a>
     </div>
 
   </div>
 </section>
 
-<section>
-  <h2 class="section-title">Stay Updated</h2>
+<div id="formPopup">
   <form action="https://formspree.io/f/xrellqgn" method="POST">
-    <input type="email" name="_replyto" placeholder="Your email address" required>
-    <button type="submit" class="btn btn-main">Subscribe</button>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Project details"></textarea>
+    <button type="submit">Send</button>
+    <button type="button" onclick="closeForm()">Close</button>
   </form>
-</section>
-
-<footer>© 2026 Ryan McHarg — Production | Contact: ryan0903@hotmail.co.uk</footer>
+</div>
 
 <script>
-// SCROLL TO TOP ON REFRESH
-window.onbeforeunload = function () { window.scrollTo(0, 0); }
+window.onbeforeunload=function(){window.scrollTo(0,0);}
 
-// MOBILE DETECTION & EMAIL CUSTOMISE
-function isMobile(){ return /Mobi|Android/i.test(navigator.userAgent); }
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+})
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el))
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  document.querySelectorAll('.card').forEach(card=>{
-    const title = card.dataset.title;
-    const mailtoBtn = card.querySelector('.mobile-mailto');
-    const form = card.querySelector('.desktop-form');
-    const trackInput = form ? form.querySelector('.track-name') : null;
-    const textarea = form ? form.querySelector('textarea') : null;
-    const emailInput = form ? form.querySelector('input[type=email]') : null;
-    const submitBtn = form ? form.querySelector('.submit-btn') : null;
-    const showBtn = form ? form.querySelector('.show-textarea') : null;
-
-    if(trackInput) trackInput.value = title;
-
-    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20ideas%20or%20changes%20here:%20____%0AThanks`;
-
-    if(isMobile()){
-      if(mailtoBtn){ 
-        mailtoBtn.href = mailtoLink; 
-        mailtoBtn.style.display='inline-block'; 
-        mailtoBtn.textContent = "CUSTOMISE"; // <- fixed mobile text
-      }
-      if(form) form.style.display='none';
-    } else {
-      if(mailtoBtn) mailtoBtn.style.display='none';
-      if(form){
-        form.style.display='block';
-        emailInput.style.display='none';
-        textarea.style.display='none';
-        submitBtn.style.display='none';
-        if(showBtn) showBtn.addEventListener('click', ()=>{
-          emailInput.style.display='block';
-          textarea.style.display='block';
-          submitBtn.style.display='inline-block';
-          showBtn.style.display='none';
-        });
-      }
-    }
-  });
-
-  // Fade-in sections on scroll
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.style.opacity='1';
-        entry.target.style.transform='translateY(0)';
-      }
-    });
-  }, {threshold:0.1});
-  sections.forEach(sec=>observer.observe(sec));
-});
-
-// CRAZY NEON SCROLL GRADIENT
-const neonColors = [
-  [0,0,0],[10,10,30],[20,10,60],[40,20,90],[80,40,150],[255,0,255],[255,255,0]
-];
-window.addEventListener('scroll', ()=>{
-  const scroll = window.scrollY;
-  const height = document.body.scrollHeight - window.innerHeight;
-  const t = Math.min(scroll/height,1);
-  function lerp(a,b,f){ return a + (b-a)*f; }
-  let idx = Math.floor(t*(neonColors.length-1));
-  let f = (t*(neonColors.length-1)) % 1;
-  const start = neonColors[idx];
-  const end = neonColors[idx+1] || neonColors[idx];
-  const r = Math.floor(lerp(start[0],end[0],f));
-  const g = Math.floor(lerp(start[1],end[1],f));
-  const b = Math.floor(lerp(start[2],end[2],f));
-  document.body.style.background = `linear-gradient(to bottom, rgb(${r},${g},${b}), #0b0b0f)`;
-});
+function openForm(){document.getElementById('formPopup').style.display='flex'}
+function closeForm(){document.getElementById('formPopup').style.display='none'}
 </script>
 
 </body>
