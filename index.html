@@ -16,7 +16,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#0b0b0f;color:#fff;overflow-x:hidden;transition:background 0.3s}
+body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidden;transition:background 0.3s}
 
 /* INTRO */
 #intro{
@@ -191,13 +191,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
   });
 });
 
-// NEON SCROLL GRADIENT
-const colors = [
-  [200,200,200], // neutral top
-  [255,50,255],
-  [50,255,255],
-  [255,255,0],
-  [255,0,150]
+// CRAZY NEON SCROLL GRADIENT (starts black, blends RGBYPV)
+const neonColors = [
+  [0,0,0],       // black top
+  [255,0,0],     // red
+  [0,255,0],     // green
+  [0,0,255],     // blue
+  [255,255,0],   // yellow
+  [128,0,128],   // purple
+  [255,0,255]    // violet
 ];
 
 window.addEventListener('scroll', ()=>{
@@ -207,9 +209,14 @@ window.addEventListener('scroll', ()=>{
 
   function lerp(a,b,f){ return a + (b-a)*f; }
 
-  const r = Math.floor(lerp(colors[0][0], colors[colors.length-1][0], t));
-  const g = Math.floor(lerp(colors[0][1], colors[colors.length-1][1], t));
-  const b = Math.floor(lerp(colors[0][2], colors[colors.length-1][2], t));
+  // interpolate across all colors progressively
+  let idx = Math.floor(t*(neonColors.length-1));
+  let f = (t*(neonColors.length-1)) % 1;
+  const start = neonColors[idx];
+  const end = neonColors[idx+1] || neonColors[idx];
+  const r = Math.floor(lerp(start[0],end[0],f));
+  const g = Math.floor(lerp(start[1],end[1],f));
+  const b = Math.floor(lerp(start[2],end[2],f));
 
   document.body.style.background = `linear-gradient(to bottom, rgb(${r},${g},${b}), #0b0b0f)`;
 });
