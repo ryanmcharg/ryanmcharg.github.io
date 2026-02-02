@@ -167,6 +167,11 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <footer>© 2026 Ryan McHarg — Production</footer>
 
 <script>
+// SCROLL TO TOP ON REFRESH
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 // MOBILE DETECTION & EMAIL CUSTOMISE
 function isMobile(){ return /Mobi|Android/i.test(navigator.userAgent); }
 
@@ -191,15 +196,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
   });
 });
 
-// CRAZY NEON SCROLL GRADIENT (starts black, blends RGBYPV)
+// CRAZY NEON SCROLL GRADIENT (dark top → bright bottom)
 const neonColors = [
   [0,0,0],       // black top
-  [255,0,0],     // red
-  [0,255,0],     // green
-  [0,0,255],     // blue
-  [255,255,0],   // yellow
-  [128,0,128],   // purple
-  [255,0,255]    // violet
+  [25,25,50],
+  [50,25,75],
+  [75,50,125],
+  [150,50,200],
+  [255,0,255],   // violet at very bottom
+  [255,255,0]    // bright yellow very bottom
 ];
 
 window.addEventListener('scroll', ()=>{
@@ -209,7 +214,6 @@ window.addEventListener('scroll', ()=>{
 
   function lerp(a,b,f){ return a + (b-a)*f; }
 
-  // interpolate across all colors progressively
   let idx = Math.floor(t*(neonColors.length-1));
   let f = (t*(neonColors.length-1)) % 1;
   const start = neonColors[idx];
