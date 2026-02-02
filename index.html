@@ -50,7 +50,8 @@ body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidd
   height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 10%;position:relative;overflow:hidden
 }
 .hero h1{font-size:60px;font-weight:800;background:linear-gradient(90deg,#00f0ff,#ff00ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:20px;color:#aaa;margin:20px 0;z-index:2;position:relative}
+.hero h2{font-size:22px;color:#aaa;margin:5px 0 20px 0;font-weight:500}
+.hero p{font-size:18px;color:#ccc;margin-bottom:20px;z-index:2;position:relative}
 .hero .btn{z-index:2;position:relative}
 .hero::before{
   content:"";position:absolute;top:0;left:0;width:100%;height:100%;
@@ -81,7 +82,7 @@ section{padding:100px 10%;opacity:0;transform:translateY(50px);transition:opacit
 .card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1;scroll-snap-align:start}
 .card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:-50px}
 .about img{width:100%;border-radius:10px}
 
 iframe{border-radius:8px;width:100%;z-index:0;position:relative}
@@ -98,7 +99,8 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 /* Mobile styling */
 @media(max-width:800px){
 .hero h1{font-size:42px}
-.about{grid-template-columns:1fr}
+.hero h2{font-size:18px}
+.about{grid-template-columns:1fr;margin-top:0}
 .desktop-form{display:none !important;}
 .mobile-mailto{display:inline-block !important;}
 .grid{overflow-x:auto;grid-template-columns:repeat(auto-fit,minmax(80%,1fr));}
@@ -116,6 +118,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 
 <div class="hero" id="hero">
   <h1>Ryan McHarg</h1>
+  <h2>Music Producer • Mixing • Custom Production</h2>
   <p>a musical portfolio.</p>
   <p>Listen below for Ryan's solo, collaborative, and sync works</p>
   <a href="#music" class="btn btn-main">Listen</a>
@@ -131,10 +134,9 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   <h2 class="section-title">About</h2>
   <div class="about">
     <div>
+      <p>I create modern, emotionally-driven production with punch, depth, and clarity. My focus is helping artists sound competitive while keeping their identity intact.</p>
+      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more. All projects include stems, free revisions, and high-resolution WAV masters (24-bit).</p>
       <p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations!</p>
-      <p>Available for production, mixing, and collaboration.</p>
-      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more.</p>
-      <p>All projects include stems, revisions, and high-resolution WAV masters (24-bit).</p>
     </div>
     <img src="ryan2.jpeg" alt="Studio photo">
   </div>
