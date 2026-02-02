@@ -73,7 +73,7 @@ body{font-family:'Poppins',sans-serif;background:#000;color:#fff;overflow-x:hidd
 
 /* SECTIONS */
 section{padding:100px 10%;opacity:0;transform:translateY(50px);transition:opacity 1s ease, transform 1s ease}
-.section-title{font-size:38px;margin-bottom:40px;border-left:5px solid #00f0ff;padding-left:15px}
+.section-title{font-size:38px;margin-bottom:40px;border-left:5px solid #00f0ff;padding-left:15px;display:flex;align-items:center;gap:10px}
 
 /* GRID & CARDS */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth}
@@ -82,7 +82,7 @@ section{padding:100px 10%;opacity:0;transform:translateY(50px);transition:opacit
 .card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1;scroll-snap-align:start}
 .card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:-50px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:-50px;align-items:center}
 .about img{width:100%;border-radius:10px}
 
 iframe{border-radius:8px;width:100%;z-index:0;position:relative}
@@ -119,8 +119,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <div class="hero" id="hero">
   <h1>Ryan McHarg</h1>
   <h2>Music Producer • Mixing • Custom Production</h2>
-  <p>a musical portfolio.</p>
-  <p>Listen below for Ryan's solo, collaborative, and sync works</p>
+  <p>A musical portfolio showcasing featured tracks, demos, and beats.</p>
   <a href="#music" class="btn btn-main">Listen</a>
   <a href="#store" class="btn btn-alt">Buy Beats</a>
 </div>
@@ -135,10 +134,10 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   <div class="about">
     <div>
       <p>I create modern, emotionally-driven production with punch, depth, and clarity. My focus is helping artists sound competitive while keeping their identity intact.</p>
-      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more. All projects include stems, free revisions, and high-resolution WAV masters (24-bit).</p>
+      <p>I use Logic Pro X and plugins including FabFilter, Waves, iZotope, Melodyne and more. All projects include stems, free revisions, and high-resolution WAV masters (24-bit/44.1kHz or 48kHz/96kHz).</p>
       <p>Do not hesitate to get in contact with all kinds of commissions, including but not limited to musical compositions, sync, lyric-writing, session-work, and project collaborations!</p>
     </div>
-    <img src="ryan2.jpeg" alt="Studio photo">
+    <img src="https://visualsproducer.wordpress.com/wp-content/uploads/2023/02/lpx-pro-q3.jpg?w=1024" alt="Studio photo">
   </div>
 </section>
 
@@ -199,7 +198,6 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   </div>
 </section>
 
-<!-- NEWSLETTER -->
 <section>
   <h2 class="section-title">Stay Updated</h2>
   <form action="https://formspree.io/f/xrellqgn" method="POST">
