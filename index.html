@@ -221,15 +221,17 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <div id="secretBeat" style="display:none; margin-top:30px;">
   <h3>Unreleased Demo</h3>
 
-  <iframe 
-    width="100%" 
-    height="166" 
-    scrolling="no" 
-    frameborder="no" 
+  <iframe
+    width="100%"
+    height="300"
+    scrolling="no"
+    frameborder="no"
     allow="autoplay"
-    src="<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258605298%3Fsecret_token%3Ds-HTqCOEAT10L&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/ryanmcharg" title="Ryan McHarg" target="_blank" style="color: #cccccc; text-decoration: none;">Ryan McHarg</a> · <a href="https://soundcloud.com/ryanmcharg/secret/s-HTqCOEAT10L" title="secret" target="_blank" style="color: #cccccc; text-decoration: none;">secret</a></div>">
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2258605298%3Fsecret_token%3Ds-HTqCOEAT10L&color=%2300f0ff&auto_play=true">
   </iframe>
+
 </div>
+
 
 </div>
 
@@ -334,22 +336,19 @@ function showPath(id){
   document.getElementById(id).style.display='block';
 }
 
-// EASTER EGG — SECRET TRACK
+// SECRET UNLOCK
 let clicks = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const trigger = document.querySelector('.hero h1'); // something always visible
+  const trigger = document.querySelector('.hero h1');
   const secretDiv = document.getElementById('secretBeat');
-  const secretAudio = document.getElementById('secretAudio');
 
-  if (!trigger || !secretAudio) return;
+  if (!trigger || !secretDiv) return;
 
   trigger.addEventListener('click', () => {
     clicks++;
     if (clicks === 5) {
-  document.getElementById('secretBeat').style.display = 'block';
-}
-
+      secretDiv.style.display = 'block';
     }
   });
 });
