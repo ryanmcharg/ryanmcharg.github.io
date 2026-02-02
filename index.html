@@ -324,19 +324,26 @@ function showPath(id){
 }
 
 // EASTER EGG
-let clicks=0;
-document.addEventListener('DOMContentLoaded',()=>{
-  const logo=document.querySelector('#intro h1');
-  if(logo){
-    logo.addEventListener('click',()=>{
+let clicks = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('#intro h1');
+  const secretAudio = document.querySelector('#secretBeat audio');
+  const secretDiv = document.getElementById('secretBeat');
+
+  if (logo && secretAudio) {
+    logo.addEventListener('click', () => {
       clicks++;
-      if(clicks===5){
-        document.getElementById('secretBeat').style.display='block';
-        alert('Secret track unlocked');
+      if (clicks === 5) {
+        secretDiv.style.display = 'block';
+        // Try to play the audio
+        secretAudio.play().catch(err => {
+          console.log('Autoplay blocked, waiting for user interaction');
+        });
       }
     });
   }
 });
+
 </script>
 
 </body>
