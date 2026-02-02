@@ -218,11 +218,15 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 </section>
 
 <!-- SECRET TRACK -->
-<div id="secretBeat">
+<div id="secretBeat" style="display:none; margin-top:30px;">
   <h3>Unreleased Demo</h3>
+
   <audio id="secretAudio" controls preload="auto">
     <source src="secret.mp3" type="audio/mpeg">
+    <source src="secret.wav" type="audio/wav">
+    Your browser does not support the audio element.
   </audio>
+
 </div>
 
 
@@ -330,27 +334,27 @@ function showPath(id){
 let clicks = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-  const trigger = document.querySelector('.hero h1'); // persistent element
+  const trigger = document.querySelector('.hero h1'); // something always visible
   const secretDiv = document.getElementById('secretBeat');
   const secretAudio = document.getElementById('secretAudio');
 
-  if (trigger && secretDiv && secretAudio) {
-    trigger.addEventListener('click', () => {
-      clicks++;
-      if (clicks === 5) {
-        secretDiv.style.display = 'block';
+  if (!trigger || !secretAudio) return;
 
-        // attempt playback
-        const playAttempt = secretAudio.play();
-        if (playAttempt !== undefined) {
-          playAttempt.catch(() => {
-            console.log("Autoplay blocked — user can press play manually.");
-          });
-        }
+  trigger.addEventListener('click', () => {
+    clicks++;
+    if (clicks === 5) {
+      secretDiv.style.display = 'block';
+
+      const p = secretAudio.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          console.log("Autoplay blocked — user can press play.");
+        });
       }
-    });
-  }
+    }
+  });
 });
+
 
 
 </script>
