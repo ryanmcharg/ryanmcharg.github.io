@@ -34,8 +34,6 @@ body{font-family:'Poppins',sans-serif;background:#0b0b0f;color:#fff;overflow-x:h
 }
 
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
-
-/* Flicker through fonts */
 @keyframes fontFlicker{
   0%{font-family:'Poppins',sans-serif}
   10%{font-family:'Roboto',sans-serif}
@@ -67,14 +65,14 @@ section{padding:100px 10%}
 .section-title{font-size:38px;margin-bottom:40px;border-left:5px solid #00f0ff;padding-left:15px}
 
 /* GRID & CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;position:relative}
+.card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1}
 .card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
 
 .about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .about img{width:100%;border-radius:10px}
 
-iframe{border-radius:8px;width:100%}
+iframe{border-radius:8px;width:100%;z-index:0;position:relative}
 footer{text-align:center;padding:40px;background:#000;color:#666}
 
 @media(max-width:800px){
@@ -134,35 +132,33 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
     <div class="card" data-title="HYPE">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
 
-      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:none;">
+      <!-- Desktop Form -->
+      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:block;margin-top:10px;">
         <input type="hidden" name="track" class="track-name" value="">
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <input type="hidden" name="_replyto" value="">
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
-      <a href="#" class="btn btn-alt mobile-mailto">
-         CUSTOMISE
-      </a>
+      <!-- Mobile mailto -->
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
 
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20purchasing%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
+      <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
     <div class="card" data-title="SAUDADEE">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
 
-      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:none;">
+      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:block;margin-top:10px;">
         <input type="hidden" name="track" class="track-name" value="">
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <input type="hidden" name="_replyto" value="">
         <button type="submit" class="btn btn-alt">CUSTOMISE</button>
       </form>
 
-      <a href="#" class="btn btn-alt mobile-mailto">
-         CUSTOMISE
-      </a>
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
 
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20purchasing%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
+      <a href="https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
   </div>
@@ -171,7 +167,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <footer>© 2026 Ryan McHarg — Production</footer>
 
 <script>
-// MOBILE DETECTION
+// MOBILE DETECTION & EMAIL CUSTOMISE
 function isMobile(){ return /Mobi|Android/i.test(navigator.userAgent); }
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -183,32 +179,39 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     if(trackInput) trackInput.value = title;
 
-    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'${encodeURIComponent(title)}'%20and%20would%20like%20to%20customise%20it.%0APlease%20specify%20any%20changes:%20____%0AThanks`;
+    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in the track '${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20changes:%20____%0AThanks`;
 
-    if(mailtoBtn) mailtoBtn.href = mailtoLink;
-
-    if(!isMobile() && form && mailtoBtn){
-      mailtoBtn.style.display='none';
-      form.style.display='block';
+    if(isMobile()){
+      if(mailtoBtn) { mailtoBtn.href = mailtoLink; mailtoBtn.style.display='inline-block'; }
+      if(form) form.style.display='none';
+    } else {
+      if(mailtoBtn) mailtoBtn.style.display='none';
+      if(form) form.style.display='block';
     }
   });
 });
 
-// SCROLL GRADIENT BACKGROUND
-const hero = document.getElementById('hero');
-const topColor = [50,100,200]; // neural cool
-const bottomColor = [255,20,200]; // crazy neon
+// NEON SCROLL GRADIENT
+const colors = [
+  [200,200,200], // neutral top
+  [255,50,255],
+  [50,255,255],
+  [255,255,0],
+  [255,0,150]
+];
 
 window.addEventListener('scroll', ()=>{
   const scroll = window.scrollY;
   const height = document.body.scrollHeight - window.innerHeight;
-  const percent = Math.min(scroll/height,1);
+  const t = Math.min(scroll/height,1);
 
-  const r = Math.floor(topColor[0] + (bottomColor[0]-topColor[0])*percent);
-  const g = Math.floor(topColor[1] + (bottomColor[1]-topColor[1])*percent);
-  const b = Math.floor(topColor[2] + (bottomColor[2]-topColor[2])*percent);
+  function lerp(a,b,f){ return a + (b-a)*f; }
 
-  hero.style.background = `radial-gradient(circle at top left, rgb(${r},${g},${b}), #0b0b0f 70%)`;
+  const r = Math.floor(lerp(colors[0][0], colors[colors.length-1][0], t));
+  const g = Math.floor(lerp(colors[0][1], colors[colors.length-1][1], t));
+  const b = Math.floor(lerp(colors[0][2], colors[colors.length-1][2], t));
+
+  document.body.style.background = `linear-gradient(to bottom, rgb(${r},${g},${b}), #0b0b0f)`;
 });
 </script>
 
