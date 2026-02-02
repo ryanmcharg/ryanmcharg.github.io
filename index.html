@@ -84,6 +84,7 @@ section{padding:100px 10%;opacity:0;transform:translateY(50px);transition:opacit
 .card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s;position:relative;z-index:1;scroll-snap-align:start}
 .card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
 
+/* ABOUT */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:-50px;align-items:center}
 .about img{width:100%;border-radius:10px}
 
@@ -94,7 +95,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 /* Hide desktop email and textarea until CUSTOMISE clicked */
 .desktop-form input[type=email],.desktop-form textarea,.desktop-form button.submit-btn{display:none;}
 
-/* Mobile styling */
+/* MOBILE */
 @media(max-width:800px){
 .hero h1{font-size:42px}
 .hero h2{font-size:18px}
@@ -120,7 +121,6 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 /* SECRET */
 #secretBeat{display:none;margin-top:30px}
 </style>
-
 <body>
 
 <div id="intro"><h1>RM</h1></div>
@@ -148,30 +148,37 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 <section id="music">
   <h2 class="section-title">Featured Work</h2>
   <div class="grid">
-    <div class="card beat-card" data-title="TAKE TWO" data-mood="energetic">
-      <h3>TAKE TWO</h3>
-      <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ohonetwothree/take-two"></iframe>
-    </div>
-    <div class="card beat-card" data-title="SO EASY (APOD Demo)" data-mood="fun">
-      <h3>SO EASY (APOD Demo)</h3>
-      <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/the-sweetest-revenge-is-letting-go-apod-demo"></iframe>
-    </div>
-    <div class="card beat-card" data-title="DREAMING IN AN UNDERPASS" data-mood="emotional">
-      <h3>DREAMING IN AN UNDERPASS</h3>
-      <iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/dreaming-in-an-underpass-instrumental"></iframe>
-    </div>
-    <div class="card beat-card" data-title="SENTIMENTS" data-mood="emotional">
-      <h3>SENTIMENTS</h3>
-      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549558%3Fsecret_token%3Ds-b2XrSTRFVXK&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-    </div>
-    <div class="card beat-card" data-title="SOLO ft. Oliver Pickard" data-mood="bouncy">
-      <h3>SOLO ft. Oliver Pickard</h3>
-      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549561%3Fsecret_token%3Ds-PSkdxTTvCkT&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-    </div>
+    <!-- Existing SoundCloud embeds -->
+    <div class="card"><h3>TAKE TWO</h3><iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ohonetwothree/take-two"></iframe></div>
+    <div class="card"><h3>SO EASY (APOD Demo)</h3><iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/the-sweetest-revenge-is-letting-go-apod-demo"></iframe></div>
+    <div class="card"><h3>DREAMING IN AN UNDERPASS</h3><iframe height="166" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/ryanmcharg/dreaming-in-an-underpass-instrumental"></iframe></div>
+    <div class="card"><h3>SENTIMENTS</h3><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549558%3Fsecret_token%3Ds-b2XrSTRFVXK&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></div>
+    <div class="card"><h3>SOLO ft. Oliver Pickard</h3><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2258549561%3Fsecret_token%3Ds-PSkdxTTvCkT&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></div>
   </div>
 </section>
 
-<!-- NEW: MOOD FILTER -->
+<section id="store">
+  <h2 class="section-title">Demos & Beats</h2>
+  <div class="grid">
+    <!-- Example beat card with data-mood added -->
+    <div class="card beat-card" data-title="HYPE" data-mood="energetic">
+      <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
+      <p>Genre: Hyperpop/House | BPM: 126 | Mood: Energetic</p>
+      <form class="desktop-form" action="https://formspree.io/f/xrellqgn" method="POST" style="margin-top:10px;">
+        <button type="button" class="btn btn-alt show-textarea">CUSTOMISE</button>
+        <input type="hidden" name="track" class="track-name" value="">
+        <input type="email" name="_replyto" placeholder="Your email address" required>
+        <textarea name="custom_notes" placeholder="Please specify any changes or ideas here..." required></textarea>
+        <input type="hidden" name="_subject" value="Beat Customise Request">
+        <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
+      </form>
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">CUSTOMISE</a>
+      <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
+    </div>
+    <!-- Repeat other beat cards with appropriate data-mood attributes -->
+  </div>
+</section>
+
 <section>
   <h2 class="section-title">Find Your Sound</h2>
   <div class="mood-buttons">
@@ -183,7 +190,6 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   </div>
 </section>
 
-<!-- NEW: PATHWAY -->
 <section>
   <h2 class="section-title">What Do You Need?</h2>
   <div class="pathway-buttons">
@@ -191,19 +197,11 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
     <button onclick="showPath('band')">🎸 I’m a Band</button>
     <button onclick="showPath('film')">🎬 I Need Music for Film</button>
   </div>
-
-  <div id="vocalist" class="pathway">
-    <p>Custom production, vocal tuning, arrangement, and radio-ready mixes.</p>
-  </div>
-  <div id="band" class="pathway">
-    <p>Live instrumentation mixing, punchy drums, full-track polish.</p>
-  </div>
-  <div id="film" class="pathway">
-    <p>Cinematic compositions, emotional scoring, sync-ready production.</p>
-  </div>
+  <div id="vocalist" class="pathway"><p>Custom production, vocal tuning, arrangement, and radio-ready mixes.</p></div>
+  <div id="band" class="pathway"><p>Live instrumentation mixing, punchy drums, full-track polish.</p></div>
+  <div id="film" class="pathway"><p>Cinematic compositions, emotional scoring, sync-ready production.</p></div>
 </section>
 
-<!-- NEW: FEEDBACK PORTAL -->
 <section>
   <h2 class="section-title">Want Feedback on Your Track?</h2>
   <div class="feedback-box">
@@ -217,62 +215,10 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   </div>
 </section>
 
-<!-- SECRET TRACK -->
 <div id="secretBeat">
-  <h3>secret.mp3</h3>
-  <audio controls src="secret.mp3"></audio>
-</div>
-
-  <div id="secretBeat" style="display:none; margin-top:30px;">
   <h3>Unreleased Demo</h3>
   <audio id="secretAudio" controls src="secret.mp3"></audio>
 </div>
-
-<script>
-let clicks = 0;
-document.addEventListener('DOMContentLoaded', () => {
-  const logo = document.querySelector('#intro h1');
-  if (logo) {
-    logo.addEventListener('click', () => {
-      clicks++;
-      if (clicks === 5) {
-        const secret = document.getElementById('secretBeat');
-        const audio = document.getElementById('secretAudio');
-        secret.style.display = 'block';
-        // Try to play automatically (works on desktop)
-        audio.play().catch(() => {
-          console.log('Autoplay blocked, user must press play manually.');
-        });
-        alert('Secret track unlocked');
-      }
-    });
-  }
-});
-</script>
-
-
-<section id="store">
-  <h2 class="section-title">Demos & Beats</h2>
-  <div class="grid">
-    <div class="card beat-card" data-title="HYPE" data-mood="energetic">
-      <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
-      <p>Genre: Hyperpop/House | BPM: 126 | Mood: Energetic</p>
-      <!-- existing customise form and buy links preserved -->
-    </div>
-    <div class="card beat-card" data-title="SAUDADE" data-mood="bouncy">
-      <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
-      <p>Genre: Hip-Hop/Latin | BPM: 121 | Mood: Bouncy</p>
-    </div>
-    <div class="card beat-card" data-title="Aspire (Jazz/Funk/Rock)" data-mood="fun">
-      <iframe height="215" src="https://solo.airbit.com/3222976?store=1"></iframe>
-      <p>Genre: Jazz/Funk | Mood: Fun</p>
-    </div>
-    <div class="card beat-card" data-title="RAIN (Alternative/Pop-Rock/Chill)" data-mood="emotional">
-      <iframe height="215" src="https://solo.airbit.com/3222977?store=1"></iframe>
-      <p>Genre: Alternative | Mood: Emotional</p>
-    </div>
-  </div>
-</section>
 
 <section>
   <h2 class="section-title">Create Your Own Mix of "Take Two"</h2>
@@ -300,72 +246,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     const title = card.dataset.title;
     const mailto = card.querySelector('.mobile-mailto');
     const form = card.querySelector('.desktop-form');
-    const ti = form ? form.querySelector('.track-name') : null;
-    const email = form ? form.querySelector('input[type=email]') : null;
-    const ta = form ? form.querySelector('textarea') : null;
-    const submit = form ? form.querySelector('.submit-btn') : null;
-    const show = form ? form.querySelector('.show-textarea') : null;
-    if(ti) ti.value = title;
-    const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am interested in '${encodeURIComponent(title)}'%0APlease specify any ideas or changes here:%20____%0AThanks`;
-    if(isMobile()){
-      if(mailto){ mailto.href=mailtoLink; mailto.style.display='inline-block'; mailto.textContent="CUSTOMISE"; }
-      if(form) form.style.display='none';
-    } else {
-      if(mailto) mailto.style.display='none';
-      if(form){
-        form.style.display='block'; email.style.display='none'; ta.style.display='none'; submit.style.display='none';
-        if(show) show.addEventListener('click',()=>{
-          email.style.display='block'; ta.style.display='block'; submit.style.display='inline-block'; show.style.display='none';
-        });
-      }
-    }
-  });
-
-  const secs = document.querySelectorAll('section');
-  const obs = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
-  secs.forEach(s=>obs.observe(s));
-});
-
-// SCROLL GRADIENT
-const neon=[[0,0,0],[10,10,30],[20,10,60],[40,20,90],[80,40,150],[255,0,255],[255,255,0]];
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY; const h=document.body.scrollHeight-window.innerHeight;
-  const t=Math.min(y/h,1);
-  function lerp(a,b,f){return a+(b-a)*f;}
-  let i=Math.floor(t*(neon.length-1)); let f=(t*(neon.length-1))%1;
-  const s=neon[i], e=neon[i+1]||s;
-  document.body.style.background=`linear-gradient(to bottom,rgb(${Math.floor(lerp(s[0],e[0],f))},${Math.floor(lerp(s[1],e[1],f))},${Math.floor(lerp(s[2],e[2],f))}),#0b0b0f)`;
-});
-
-// MOOD FILTER
-function filterBeats(mood){
-  document.querySelectorAll('.beat-card').forEach(card=>{
-    if(mood==='all'){card.style.display='block';return;}
-    card.style.display = card.dataset.mood.includes(mood) ? 'block':'none';
-  });
-}
-
-// PATHWAY SWITCH
-function showPath(id){
-  document.querySelectorAll('.pathway').forEach(p=>p.style.display='none');
-  document.getElementById(id).style.display='block';
-}
-
-// EASTER EGG
-let clicks=0;
-document.addEventListener('DOMContentLoaded',()=>{
-  const logo=document.querySelector('#intro h1');
-  if(logo){
-    logo.addEventListener('click',()=>{
-      clicks++;
-      if(clicks===5){
-        document.getElementById('secretBeat').style.display='block';
-        alert('Secret track unlocked');
-      }
-    });
-  }
-});
-</script>
-
-</body>
-</html>
+    const ti = form ? form.querySelector
