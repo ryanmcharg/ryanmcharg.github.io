@@ -219,9 +219,37 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 
 <!-- SECRET TRACK -->
 <div id="secretBeat">
-  <h3>Unreleased Demo</h3>
+  <h3>secret.mp3</h3>
   <audio controls src="secret.mp3"></audio>
 </div>
+
+  <div id="secretBeat" style="display:none; margin-top:30px;">
+  <h3>Unreleased Demo</h3>
+  <audio id="secretAudio" controls src="secret.mp3"></audio>
+</div>
+
+<script>
+let clicks = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('#intro h1');
+  if (logo) {
+    logo.addEventListener('click', () => {
+      clicks++;
+      if (clicks === 5) {
+        const secret = document.getElementById('secretBeat');
+        const audio = document.getElementById('secretAudio');
+        secret.style.display = 'block';
+        // Try to play automatically (works on desktop)
+        audio.play().catch(() => {
+          console.log('Autoplay blocked, user must press play manually.');
+        });
+        alert('Secret track unlocked');
+      }
+    });
+  }
+});
+</script>
+
 
 <section id="store">
   <h2 class="section-title">Demos & Beats</h2>
