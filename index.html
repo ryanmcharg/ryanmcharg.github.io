@@ -175,7 +175,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
       </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;"></a>
       <a href="https://solo.airbit.com/beat/RyanMcHarg/hype-hyperpophousebbnogeorgedaniel" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
@@ -191,7 +191,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
         <input type="hidden" name="_subject" value="Beat Customise Request">
         <button type="submit" class="btn btn-alt submit-btn">SEND REQUEST</button>
       </form>
-      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;">Please specify any ideas or changes here:</a>
+      <a href="#" class="btn btn-alt mobile-mailto" style="display:none;"></a>
       <a href="https://solo.airbit.com/beat/RyanMcHarg/saudade-hip-hoplatinbillieeilishcharlixcx" class="btn btn-main" target="_blank">BUY</a>
     </div>
 
@@ -231,7 +231,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const mailtoLink = `mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'${encodeURIComponent(title)}'%20and%20would%20like%20to customise it.%0APlease%20specify%20any%20ideas%20or%20changes%20here:%20____%0AThanks`;
 
     if(isMobile()){
-      if(mailtoBtn){ mailtoBtn.href = mailtoLink; mailtoBtn.style.display='inline-block'; }
+      if(mailtoBtn){ 
+        mailtoBtn.href = mailtoLink; 
+        mailtoBtn.style.display='inline-block'; 
+        mailtoBtn.textContent = "CUSTOMISE"; // <- fixed mobile text
+      }
       if(form) form.style.display='none';
     } else {
       if(mailtoBtn) mailtoBtn.style.display='none';
