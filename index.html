@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ryan McHarg | Producer</title>
 
+<!-- FAVICONS -->
 <link rel="icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -15,18 +16,19 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#0b0b0f;color:#fff}
+body{font-family:'Poppins',sans-serif;background:#0b0b0f;color:#fff;overflow-x:hidden;transition:background 0.3s}
 
 #intro{position:fixed;width:100%;height:100vh;background:#000;display:flex;justify-content:center;align-items:center;z-index:9999;animation:fadeOut 1s ease 2s forwards}
 #intro h1{font-size:110px;font-weight:800;letter-spacing:8px;background:linear-gradient(90deg,#00f0ff,#ff00ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
 
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 10%;background:radial-gradient(circle at top left,#1a1a2e,#0b0b0f 60%)}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 10%;transition:background 0.5s}
 .hero h1{font-size:60px;font-weight:800;background:linear-gradient(90deg,#00f0ff,#ff00ea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{font-size:20px;color:#aaa;margin:20px 0}
 
 .btn{display:inline-block;padding:12px 26px;border-radius:30px;font-weight:600;text-decoration:none;margin:10px 8px 0 0;transition:.3s;font-size:14px}
 .btn-main{background:#00f0ff;color:#000}
+.btn-main:hover{box-shadow:0 0 15px #00f0ff;transform:scale(1.05)}
 .btn-alt{border:2px solid #ff00ea;color:#ff00ea}
 .btn-alt:hover{background:#ff00ea;color:#000}
 
@@ -34,7 +36,8 @@ section{padding:100px 10%}
 .section-title{font-size:38px;margin-bottom:40px;border-left:5px solid #00f0ff;padding-left:15px}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.card{background:#14141c;padding:20px;border-radius:12px}
+.card{background:#14141c;padding:20px;border-radius:12px;box-shadow:0 0 25px rgba(0,0,0,.5);transition:.3s}
+.card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(0,240,255,.3)}
 
 .about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .about img{width:100%;border-radius:10px}
@@ -53,7 +56,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
 
 <div id="intro"><h1>RM</h1></div>
 
-<div class="hero">
+<div class="hero" id="hero">
   <h1>Ryan McHarg</h1>
   <p>Music Producer • Mixing • Custom Production</p>
   <a href="#music" class="btn btn-main">Listen</a>
@@ -73,7 +76,7 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   </div>
 </section>
 
-<!-- FEATURED (NOT FOR SALE) -->
+<!-- FEATURED TRACKS -->
 <section id="music">
   <h2 class="section-title">Featured Work</h2>
   <div class="grid">
@@ -96,22 +99,79 @@ footer{text-align:center;padding:40px;background:#000;color:#666}
   <h2 class="section-title">Demos & Beats</h2>
   <div class="grid">
 
-    <div class="card">
+    <div class="card" data-title="Beat 1">
       <iframe height="215" src="https://solo.airbit.com/3222920?store=1"></iframe>
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20this%20beat%20and%20would%20like%20to%20customise%20it.%0AThanks" class="btn btn-alt">CUSTOMISE</a>
+
+      <!-- Desktop Form -->
+      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:none;">
+        <input type="hidden" name="track" value="Beat 1">
+        <input type="hidden" name="_subject" value="Beat Customise Request">
+        <input type="hidden" name="_replyto" value="">
+        <button type="submit" class="btn btn-alt">CUSTOMISE</button>
+      </form>
+
+      <!-- Mobile mailto -->
+      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'Beat%201'%20and%20would%20like%20to%20customise%20it.%0APlease%20specify%20any%20changes:%20____%0AThanks" 
+         class="btn btn-alt mobile-mailto">
+         CUSTOMISE
+      </a>
+
+      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20purchasing%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
     </div>
 
-    <div class="card">
+    <div class="card" data-title="Beat 2">
       <iframe height="215" src="https://solo.airbit.com/3222921?store=1"></iframe>
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
-      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20this%20beat%20and%20would%20like%20to%20customise%20it.%0AThanks" class="btn btn-alt">CUSTOMISE</a>
+
+      <form class="desktop-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:none;">
+        <input type="hidden" name="track" value="Beat 2">
+        <input type="hidden" name="_subject" value="Beat Customise Request">
+        <input type="hidden" name="_replyto" value="">
+        <button type="submit" class="btn btn-alt">CUSTOMISE</button>
+      </form>
+
+      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Customise%20Request&body=Hi%20Ryan,%0AI%20am%20interested%20in%20the%20track%20'Beat%202'%20and%20would%20like%20to%20customise%20it.%0APlease%20specify%20any%20changes:%20____%0AThanks" 
+         class="btn btn-alt mobile-mailto">
+         CUSTOMISE
+      </a>
+
+      <a href="mailto:ryan0903@hotmail.co.uk?subject=Beat%20Purchase%20Enquiry&body=Hi%20Ryan,%0AI%20am%20interested%20in%20purchasing%20this%20beat.%0AThanks" class="btn btn-main">BUY</a>
     </div>
 
   </div>
 </section>
 
 <footer>© 2026 Ryan McHarg — Production</footer>
+
+<script>
+// Mobile detection & swap desktop form
+function isMobile(){ return /Mobi|Android/i.test(navigator.userAgent); }
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(!isMobile()){
+    document.querySelectorAll('.card').forEach(card=>{
+      const mailtoBtn = card.querySelector('.mobile-mailto');
+      const form = card.querySelector('.desktop-form');
+      if(mailtoBtn && form){
+        mailtoBtn.style.display='none';
+        form.style.display='block';
+      }
+    });
+  }
+});
+
+// Scroll gradient effect
+const hero = document.getElementById('hero');
+window.addEventListener('scroll', ()=>{
+  const scroll = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const percent = scroll/height;
+  // interpolate between neural cool and crazy neon
+  hero.style.background = `linear-gradient(circle at top left, 
+    rgba(${Math.floor(50 + 150*percent)},${Math.floor(100 + 100*percent)},${Math.floor(200 - 50*percent)},1),
+    rgba(${Math.floor(0 + 255*percent)},${Math.floor(255 - 100*percent)},${Math.floor(200*percent)},1)
+  )`;
+});
+</script>
 
 </body>
 </html>
